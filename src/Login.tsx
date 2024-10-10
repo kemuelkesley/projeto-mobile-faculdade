@@ -4,7 +4,7 @@ import { TouchableOpacity } from 'react-native';
 import { Titulo } from './componentes/Titulo';
 
 
-export default function Login() {
+export default function Login({navigation}) {
   return (
     <VStack flex={1} alignItems="center" justifyContent="center"  p={5}>
       <Image source={Hospital} alt="Logo Voll" />
@@ -53,7 +53,7 @@ export default function Login() {
 
       <Box w="100%" flexDirection="row" justifyContent="center" mt={8}>      
         <Text>Ainda não tem Cadastro? </Text>  
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
           <Text color="blue.500">
             Faça seu cadastro
           </Text>
