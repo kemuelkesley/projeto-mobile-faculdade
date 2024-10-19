@@ -1,58 +1,77 @@
-import { VStack, Image, Text, Box, FormControl, Input, Button, Link } from 'native-base'
-import Hospital from './assets/Hospital.png'
-import { TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { VStack, Image, Text, Box, FormControl, Input, Button, Link } from 'native-base';
+import Hospital from './assets/Hospital.png';
+import { TouchableOpacity, Alert } from 'react-native';
 import { Titulo } from './componentes/Titulo';
 
+export default function Login({ navigation }) {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
 
-export default function Login({navigation}) {
+  const handleLogin = () => {
+    if (email === 'administrador' && senha === '123456') {
+      navigation.navigate('Tabs');
+    } else {
+      Alert.alert('Erro', 'Login ou senha incorretos.');
+    }
+  };
+
   return (
-    <VStack flex={1} alignItems="center" justifyContent="center"  p={5}>
+    <VStack flex={1} alignItems="center" justifyContent="center" p={5}>
       <Image source={Hospital} alt="Logo Voll" />
-      
-       {/* Componente */}
+
+      {/* Componente */}
       <Titulo>
         Faça login em sua Conta
-      </Titulo>   
+      </Titulo>
 
       <Box>
         <FormControl mt={3}>
           <FormControl.Label>E-mail</FormControl.Label>
-          <Input placeholder='Insira seu endereço de email'
+          <Input
+            placeholder='Insira seu endereço de email'
             size='lg'
             w="100%"
             borderRadius='lg'
             backgroundColor='gray.100'
             shadow={3}
+            value={email}
+            onChangeText={(text) => setEmail(text)}  // Armazena o valor no estado
           />
         </FormControl>
 
         <FormControl mt={3}>
           <FormControl.Label>Senha</FormControl.Label>
-          <Input placeholder='Insira sua senha'
+          <Input
+            placeholder='Insira sua senha'
             size='lg'
             w="100%"
             borderRadius='lg'
             backgroundColor='gray.100'
             shadow={3}
+            secureTextEntry
+            value={senha}
+            onChangeText={(text) => setSenha(text)}  // Armazena o valor no estado
           />
         </FormControl>
       </Box>
-      
+
       <Button
         w="100%"
         bg="blue.800"
         mt={5}
-        borderRadius="lg"  
+        borderRadius="lg"
+        onPress={handleLogin}  // Verifica o login e a senha
       >
-          Entrar
+        Entrar
       </Button>
 
-      <Link href='https://www.alura.com.br' mt={2}>
+      <Link href='https://github.com/kemuelkesley' mt={2}>
         Esqueceu sua senha?
       </Link>
 
-      <Box w="100%" flexDirection="row" justifyContent="center" mt={8}>      
-        <Text>Ainda não tem Cadastro? </Text>  
+      <Box w="100%" flexDirection="row" justifyContent="center" mt={8}>
+        <Text>Ainda não tem Cadastro? </Text>
         <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
           <Text color="blue.500">
             Faça seu cadastro
@@ -62,4 +81,3 @@ export default function Login({navigation}) {
     </VStack>
   );
 }
-
