@@ -1,24 +1,38 @@
 import React, { useState } from 'react';
-import { VStack, Image, Text, Box, FormControl, Input, Button, Link } from 'native-base';
+import { VStack, Image, Text, Box, FormControl, Input, Button, Link, Alert } from 'native-base';
 import Hospital from './assets/Hospital.png';
-import { TouchableOpacity, Alert } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Titulo } from './componentes/Titulo';
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [showErrorAlert, setShowErrorAlert] = useState(false);
 
   const handleLogin = () => {
-    if (email === 'administrador' && senha === '123456') {
+    // Verifica se os campos estão vazios
+    if (email.trim() === '' || senha.trim() === '') {
+      setShowErrorAlert(true); 
+      setTimeout(() => {
+        setShowErrorAlert(false);
+      }, 3000);
+      return;
+    }
+
+    // Verifica credenciais
+    if (email === 'admin' && senha === '123456') {
       navigation.navigate('Tabs');
     } else {
-      Alert.alert('Erro', 'Login ou senha incorretos.');
+      setShowErrorAlert(true); // Exibe o alerta estilizado
+      setTimeout(() => {
+        setShowErrorAlert(false);
+      }, 3000); // Fecha o alerta após 3 segundos
     }
   };
 
   return (
     <VStack flex={1} alignItems="center" justifyContent="center" p={5}>
-      <Image source={Hospital} alt="Logo Voll" />
+      <Image source={Hospital} width={180} alt="Logo Hospital" />
 
       {/* Componente */}
       <Titulo>
@@ -27,7 +41,9 @@ export default function Login({ navigation }) {
 
       <Box>
         <FormControl mt={3}>
-          <FormControl.Label>E-mail</FormControl.Label>
+          <FormControl.Label>
+            E-mail
+          </FormControl.Label>
           <Input
             placeholder='Insira seu endereço de email'
             size='lg'
@@ -44,6 +60,7 @@ export default function Login({ navigation }) {
           <FormControl.Label>Senha</FormControl.Label>
           <Input
             placeholder='Insira sua senha'
+            type='password'
             size='lg'
             w="100%"
             borderRadius='lg'
@@ -78,6 +95,18 @@ export default function Login({ navigation }) {
           </Text>
         </TouchableOpacity>
       </Box>
+
+      {/* Alerta estilizado */}
+      {showErrorAlert && (
+        <Alert w="100%" status="error" colorScheme="blue" mt={4}>
+          <VStack space={1} flexShrink={1} w="100%" alignItems="center">
+            <Alert.Icon size="md" />
+            <Text fontSize="md" fontWeight="medium" color="coolGray.800">
+              {email.trim() === '' || senha.trim() === '' ? 'Os campos devem ser preenchidos.' : 'Login ou senha incorretos.'}
+            </Text>
+          </VStack>
+        </Alert>
+      )}
     </VStack>
   );
 }

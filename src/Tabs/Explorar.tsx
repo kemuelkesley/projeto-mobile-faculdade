@@ -25,8 +25,8 @@ export default function Explorar(){
           <VStack flex={1} w="100%" alignItems="flex-start" bgColor="white" key={index}>
             <CardConsulta 
               especialidade="Cardiologia"
-              foto="https://github.com/andreocunha.png"
-              nome="Dr. Cunha"
+              foto="https://github.com/kemuelkesley.png"
+              nome="Dr. Kem"
             />
           </VStack>
         ))}
