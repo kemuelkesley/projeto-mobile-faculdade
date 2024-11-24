@@ -14,7 +14,7 @@ export default function Consultas(){
             <CardConsulta 
                 nome='Dr. Andre'
                 especialidade="Cardiologista"
-                foto="https://github.com/kemuelkesley.png"
+                foto="https://i.pinimg.com/736x/05/7e/81/057e81e5e6a1e22f42a69539e733fbf5.jpg"
                 data="20/11/2024"
 
                 // se comentar as duas variaveis vai aparecer o botão de agendar
@@ -28,7 +28,7 @@ export default function Consultas(){
             <CardConsulta 
                 nome='Dr. Andre'
                 especialidade="Cardiologista"
-                foto="https://github.com/kemuelkesley.png"
+                foto="https://i.pinimg.com/736x/05/7e/81/057e81e5e6a1e22f42a69539e733fbf5.jpg"
                 data="20/11/2024"
 
                 // se comentar as duas variaveis vai aparecer o botão de agendar
@@ -38,7 +38,7 @@ export default function Consultas(){
             <CardConsulta 
                 nome='Dr. Andre'
                 especialidade="Cardiologista"
-                foto="https://github.com/kemuelkesley.png"
+                foto="https://i.pinimg.com/736x/05/7e/81/057e81e5e6a1e22f42a69539e733fbf5.jpg"
                 data="20/11/2024"
 
                 // se comentar as duas variaveis vai aparecer o botão de agendar
@@ -48,7 +48,7 @@ export default function Consultas(){
             <CardConsulta 
                 nome='Dr. Andre'
                 especialidade="Cardiologista"
-                foto="https://github.com/kemuelkesley.png"
+                foto="https://i.pinimg.com/736x/05/7e/81/057e81e5e6a1e22f42a69539e733fbf5.jpg"
                 data="20/11/2024"
 
                 // se comentar as duas variaveis vai aparecer o botão de agendar
